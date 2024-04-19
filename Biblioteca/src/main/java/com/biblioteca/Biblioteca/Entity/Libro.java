@@ -14,8 +14,10 @@ public class Libro extends ABaseEntity{
     private  int anioPublicacion;
 
 
-    @Column(name = "estado")
-    private Boolean estado;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private Categoria categoriaId;
+
     public String getTitulo() {
         return titulo;
     }
@@ -36,11 +38,7 @@ public class Libro extends ABaseEntity{
 
     public void setAnioPublicacion(int anioPublicacion) { this.anioPublicacion = anioPublicacion;}
 
-    public Boolean getEstado() {
-        return estado;
-    }
+    public Categoria getCategoriaId() { return categoriaId; }
 
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
+    public void setCategoriaId(Categoria categoriaId) { this.categoriaId = categoriaId; }
 }
